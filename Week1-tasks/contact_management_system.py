@@ -4,7 +4,10 @@ def printlist(contact_list):
     if len(contact_list) > 0:
         i = 1
         for key, value in sorted(contact_list.items()):
-            print(i,"->",key,"   ", value)
+            Number = str(value)
+            if len(Number) == 10:
+                Number = Number[:3] + "-" + Number[3:6] + "-" + Number[6:]
+            print(i,"->",str(key).capitalize(),"   ", Number)
             i = i + 1
     else:
         print("No Contact")
@@ -30,7 +33,15 @@ while(1):
     print("press 4: Delete Contact")
     print("press 5: Search Contact")
     print("press 0: To Exit")
-    choise = int(input("Enter your choice here: "))
+
+    #handle input data that it should be integer. 
+    while(1):
+        try:
+            choise = int(input("Enter your choice here: "))
+            break
+        except Exception as e:
+            print("Give input in Numbers.")
+
     print()
     if choise == 0:
         break
